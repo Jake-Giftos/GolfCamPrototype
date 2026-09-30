@@ -1,0 +1,44 @@
+# XcodeGen spec. The .xcodeproj is generated from this file (in CI or on a Mac with `xcodegen generate`),
+# so the project can be authored and versioned from Windows without hand-editing a .pbxproj.
+name: GolfCamPrototype
+options:
+  bundleIdPrefix: com.personal
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+targets:
+  GolfCamPrototype:
+    type: application
+    platform: iOS
+    sources:
+      - path: GolfCamPrototype
+    scheme: {}
+    info:
+      path: GolfCamPrototype/Info.plist
+      properties:
+        CFBundleDisplayName: GolfCam
+        CFBundleShortVersionString: "0.1.0"
+        CFBundleVersion: "1"
+        LSRequiresIPhoneOS: true
+        UILaunchScreen: {}
+        UIRequiresFullScreen: true
+        UIStatusBarHidden: true
+        UIViewControllerBasedStatusBarAppearance: false
+        # Landscape-right UI == the camera sensor's native orientation, so the preview and the
+        # analysed pixel buffers share the same axes with no rotation.
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationLandscapeRight
+        NSCameraUsageDescription: "GolfCam uses the rear camera at high frame rate to measure golf ball launch."
+        NSMotionUsageDescription: "GolfCam uses the gravity sensor to know which way is up when computing launch angle."
+        # Expose Documents (shot logs, CSV, debug frames) in the Files app.
+        UIFileSharingEnabled: true
+        LSSupportsOpeningDocumentsInPlace: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.personal.golfcamprototype
+        TARGETED_DEVICE_FAMILY: "1"
+        ENABLE_PREVIEWS: NO
